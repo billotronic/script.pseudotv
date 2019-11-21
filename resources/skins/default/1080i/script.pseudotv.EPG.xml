@@ -3,7 +3,7 @@
 	<controls>
 		<!--HEADER-->
 		<control type="group">
-			<visible>Player.HasVideo + !Window.IsActive(videoosd) + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.DisplayAfterSeek | Player.IsTempo]</visible>
+			<visible>Player.HasVideo + !Window.IsActive(videoosd) + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.IsTempo]</visible>
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
@@ -459,14 +459,14 @@
 		</control>
 		<!--SELECTED INFO-->
 		<control type="group">
-			<visible>Player.HasVideo + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.DisplayAfterSeek | Player.IsTempo]</visible>
+			<visible>Player.HasVideo + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.IsTempo]</visible>
 			<control type="fadelabel">
 				<description>Show Title Label</description>
 				<left>30</left>
-				<top>930</top>
+				<top>923</top>
 				<width>1660</width>
 				<height>40</height>
-				<label>[B]$INFO[Control.GetLabel(500)]$INFO[Control.GetLabel(501),: [COLOR FFA0A0A0],[/COLOR]][/B]</label>
+				<label>[B]$INFO[Control.GetLabel(500)]$INFO[Control.GetLabel(501), [COLOR FFA0A0A0],[/COLOR]][/B]</label>
 				<align>left</align>
 				<aligny>center</aligny>
 				<font>PseudoTv14</font>
@@ -479,13 +479,12 @@
 			<control type="textbox" id="502">
 				<description>Plot</description>
 				<left>30</left>
-				<top>980</top>
+				<top>973</top>
 				<width>1650</width>
-				<height>75</height>
+				<height>85</height>
 				<font>PseudoTv13</font>
 				<textcolor>AAFFFFFF</textcolor>
 				<shadowcolor>22000000</shadowcolor>
-				<align>justify</align>
 				<autoscroll time="4000" delay="6000" repeat="6000">True</autoscroll>
 			</control>
 			<control type="image" id="503">

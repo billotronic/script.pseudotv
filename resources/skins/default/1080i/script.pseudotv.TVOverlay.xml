@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<controls>
-		<control type="image" id="103">
-			<description>Channel Bug</description>
-			<left>1695</left>
-			<top>952</top>
-			<width>161</width>
-			<height>109</height>
-			<aspectratio>keep</aspectratio>
-			<visible>Player.HasVideo + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.DisplayAfterSeek | Player.IsTempo]</visible>
-			<animation effect="fade" end="20" condition="True">conditional</animation>
-		</control>
 		<control type="group" id="102">
-			<visible>Player.HasVideo + !Window.IsActive(videoosd) + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.DisplayAfterSeek | Player.IsTempo]</visible>
+			<visible>Player.HasVideo + !Window.IsActive(videoosd) + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.IsTempo]</visible>
 			<!--HEADER-->
 			<control type="image">
 				<left>0</left>
@@ -118,6 +108,17 @@
 				<aspectratio aligny="bottom">keep</aspectratio>
 				<bordertexture border="20">ptv_thumb_shadow.png</bordertexture>
 				<bordersize>20</bordersize>
+				<visible>String.IsEmpty(Player.Art(tvshow.poster)) + !String.IsEmpty(Player.Art(poster))</visible>
+			</control>
+			<control type="image">
+				<top>715</top>
+				<width>253</width>
+				<height>372</height>
+				<texture>ptv_DefaultVideo.png</texture>
+				<aspectratio aligny="bottom">keep</aspectratio>
+				<bordertexture border="20">ptv_thumb_shadow.png</bordertexture>
+				<bordersize>20</bordersize>
+				<visible>String.IsEmpty(Player.Art(tvshow.poster)) + String.IsEmpty(Player.Art(poster))</visible>
 			</control>
 			<control type="label" id="502">
 				<description>Heading label</description>
@@ -133,7 +134,7 @@
 			</control>
 			<control type="fadelabel">
 				<left>252</left>
-				<top>830</top>
+				<top>833</top>
 				<width>1475</width>
 				<height>40</height>
 				<align>left</align>
@@ -144,18 +145,17 @@
 				<scrollout>false</scrollout>
 				<pauseatend>1800</pauseatend>
 				<scrollspeed>40</scrollspeed>
-				<label>[B]$INFO[Control.GetLabel(503)]$INFO[Control.GetLabel(504),: [COLOR FFA0A0A0],[/COLOR]][/B]</label>
+				<label>[B]$INFO[Control.GetLabel(503)]$INFO[Control.GetLabel(504), [COLOR FFA0A0A0],[/COLOR]][/B]</label>
 			</control>
 			<control type="textbox" id="505">
 				<description>Plot</description>
 				<left>252</left>
-				<top>885</top>
+				<top>883</top>
 				<width>1640</width>
-				<height>75</height>
+				<height>85</height>
 				<font>PseudoTv13</font>
 				<textcolor>AAFFFFFF</textcolor>
 				<shadowcolor>22000000</shadowcolor>
-				<align>justify</align>
 				<autoscroll time="4000" delay="6000" repeat="6000">True</autoscroll>
 			</control>
 			<control type="image" id="506">
@@ -168,13 +168,13 @@
 			</control>
 			<!--MEDIA FLAGS-->
 			<control type="grouplist">
-				<left>1253</left>
+				<right>24</right>
 				<top>967</top>
-				<width>640</width>
+				<width>770</width>
 				<height>90</height>
 				<align>right</align>
 				<orientation>horizontal</orientation>
-				<itemgap>25</itemgap>
+				<itemgap>20</itemgap>
 				<control type="image">
 					<width>135</width>
 					<height>90</height>
@@ -203,19 +203,27 @@
 					<bordersize>7</bordersize>
 					<texture colordiffuse="AAFFFFFF">$INFO[VideoPlayer.AudioCodec,ptv_flags/audiocodec/,.png]</texture>
 				</control>
+				<control type="image">
+					<width>135</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<bordersize>7</bordersize>
+					<texture colordiffuse="AAFFFFFF">ptv_flags/ptv_cc.png</texture>
+					<visible>VideoPlayer.HasSubtitles</visible>
+				</control>
 			</control>
 			<!--PROGRESS-->
 			<control type="label">
 				<left>252</left>
-				<top>985</top>
+				<top>990</top>
 				<width>500</width>
 				<height>40</height>
 				<align>left</align>
 				<aligny>center</aligny>
-				<font>PseudoTv14</font>
+				<font>PseudoTv13</font>
 				<textcolor>AAFFFFFF</textcolor>
 				<shadowcolor>22000000</shadowcolor>
-				<label>$INFO[Player.Time]$INFO[Player.Duration, / ]</label>
+				<label>[B]$INFO[Player.Time]$INFO[Player.Duration, / ][/B]</label>
 			</control>
 			<control type="progress" id="23">
 				<left>252</left>
@@ -234,6 +242,14 @@
 				<control type="label" id="503" />
 				<control type="label" id="504" />
 			</control>
+		</control>
+		<control type="image" id="103">
+			<description>Channel Bug</description>
+			<width>161</width>
+			<height>109</height>
+			<aspectratio>keep</aspectratio>
+			<visible>Player.HasVideo + ![Player.Seeking | Player.Paused | Player.Forwarding | Player.Rewinding | Player.IsTempo]</visible>
+			<animation effect="fade" end="20" condition="True">conditional</animation>
 		</control>
 	</controls>
 </window>
